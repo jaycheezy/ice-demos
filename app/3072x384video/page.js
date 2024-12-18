@@ -11,20 +11,36 @@ export default function Page3072x384() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentAdIndex(prev => (prev + 1) % adUrls.length);
+      setCurrentAdIndex((prev) => (prev + 1) % adUrls.length);
     }, 30000);
     return () => clearInterval(interval);
   }, [adUrls.length]);
 
+  const currentItem = adUrls[currentAdIndex];
+  const isVideo = currentItem.endsWith(".mp4");
+
   return (
-    <div>
-      <iframe
-        key={currentAdIndex} // This key changes every 30s causing a re-mount
-        src={adUrls[currentAdIndex]}
-        width="3072"
-        height="384"
-        style={{ border: "none" }}
-      ></iframe>
+    <div style={{ width: "3072px", height: "384px" }}>
+      {isVideo ? (
+        <video
+          key={currentAdIndex}
+          src={currentItem}
+          width="3072"
+          height="384"
+          style={{ border: "none" }}
+          autoPlay
+          muted
+          loop
+        />
+      ) : (
+        <iframe
+          key={currentAdIndex}
+          src={currentItem}
+          width="3072"
+          height="384"
+          style={{ border: "none" }}
+        ></iframe>
+      )}
     </div>
   );
 }
