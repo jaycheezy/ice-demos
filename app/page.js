@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -8,6 +7,7 @@ export default function Home() {
       <a href="/745x640">745x640</a>
       <a href="/745x130">745x130</a>
       <a href="/3072x384">3072x384</a>
+      <a href="/3072x384video">3072x384 + video</a>
     </div>
   );
 }
