@@ -1,30 +1,33 @@
 'use client'
 import { useState, useEffect } from 'react';
+import '../globals.css'; // or relative path to your CSS file
 
 export default function Page3072x384() {
-  const adUrls = [
-    "https://iframe.fresh8.co/index.html?id=675c0f8967f4ed0456136b35",
-    "/video.mp4"
+  const items = [
+    { src: "/video2.mp4", type: "video", duration: 52000 },
+    { src: "https://iframe.fresh8.co/index.html?id=675c0f8967f4ed0456136b35", type: "iframe", duration: 30000 },
+    { src: "/video.mp4", type: "video", duration: 30000 }
   ];
-  
-  const [currentAdIndex, setCurrentAdIndex] = useState(0);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentAdIndex((prev) => (prev + 1) % adUrls.length);
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [adUrls.length]);
+    const duration = items[currentIndex].duration;
+    const timer = setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    }, duration);
 
-  const currentItem = adUrls[currentAdIndex];
-  const isVideo = currentItem.endsWith(".mp4");
+    return () => clearTimeout(timer);
+  }, [currentIndex, items]);
+
+  const currentItem = items[currentIndex];
 
   return (
-    <div style={{ width: "3072px", height: "384px" }}>
-      {isVideo ? (
+    <div className="background-blue" style={{ width: "3072px", height: "384px" }}>
+      {currentItem.type === "video" ? (
         <video
-          key={currentAdIndex}
-          src={currentItem}
+          key={currentIndex}
+          src={currentItem.src}
           width="3072"
           height="384"
           style={{ border: "none" }}
@@ -34,12 +37,12 @@ export default function Page3072x384() {
         />
       ) : (
         <iframe
-          key={currentAdIndex}
-          src={currentItem}
+          key={currentIndex}
+          src={currentItem.src}
           width="3072"
           height="384"
           style={{ border: "none" }}
-        ></iframe>
+        />
       )}
     </div>
   );
