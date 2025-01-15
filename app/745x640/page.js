@@ -2,25 +2,29 @@
 import { useState, useEffect } from 'react';
 
 export default function Page745x640() {
-  const adUrls = [
-    "https://iframe.fresh8.co/index.html?id=67627b5a67f4ed0456154b59",
-    "https://iframe.fresh8.co/index.html?id=67627b8067f4ed0456155092"
+  const items = [
+    { src: "/bet20.png", type: "image", duration: 10000 },
+    { src: "https://iframe.fresh8.co/index.html?id=678656f801d3a51276650568", type: "iframe", duration: 30000 },
   ];
-  
-  const [currentAdIndex, setCurrentAdIndex] = useState(0);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentAdIndex(prev => (prev + 1) % adUrls.length);
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [adUrls.length]);
+    const duration = items[currentIndex].duration;
+    const timer = setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, items]);
+
+  const currentItem = items[currentIndex];
 
   return (
     <div>
       <iframe
-        key={currentAdIndex} // This key changes every 30s causing a re-mount
-        src={adUrls[currentAdIndex]}
+        key={currentIndex}
+        src={currentItem.src}
         width="745"
         height="640"
         style={{ border: "none" }}
