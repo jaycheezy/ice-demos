@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 
 export default function Page745x130() {
   const items = [
-    { src: "/freebets.png", type: "image", duration: 10000 },
-    { src: "https://iframe.fresh8.co/index.html?id=6786911601d3a51276653b49", type: "iframe", duration: 30000 },
+    { src: "/picksmall.png", type: "image", duration: 10000 },
+    { src: "https://iframe.fresh8.co/index.html?id=6786911601d3a51276653b49", type: "iframe", duration: 20000 },
     { src: "/ads.png", type: "image", duration: 10000 },
   ];
 
@@ -22,7 +22,7 @@ export default function Page745x130() {
   const currentItem = items[currentIndex];
 
   return (
-    <div>
+    <div className="background-blue" style={{ width: "745px", height: "130px" }}>
       <iframe
         key={currentIndex}
         src={currentItem.src}

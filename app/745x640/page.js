@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 export default function Page745x640() {
   const items = [
-    { src: "/bet20.png", type: "image", duration: 10000 },
+    { src: "/pick.png", type: "image", duration: 10000 },
     { src: "https://iframe.fresh8.co/index.html?id=678656f801d3a51276650568", type: "iframe", duration: 30000 },
   ];
 
@@ -21,7 +21,7 @@ export default function Page745x640() {
   const currentItem = items[currentIndex];
 
   return (
-    <div>
+    <div className="background-blue" style={{ width: "745px", height: "640px" }}>
       <iframe
         key={currentIndex}
         src={currentItem.src}
