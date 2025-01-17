@@ -6,12 +6,10 @@ export default function Page3072x384() {
   const items = [
     { src: "/whowillwin.png", type: "image", duration: 10000 },
     { src: "/download.png", type: "image", duration: 10000 },
-    { src: "/yourbrand.png", type: "image", duration: 10000 },
     { src: "https://iframe.fresh8.co/index.html?id=678686c7684b50193ddcd882", type: "iframe", duration: 20000 },
     { src: "/video2.mp4", type: "video", duration: 52000 },
     { src: "/whowillwin.png", type: "image", duration: 10000 },
     { src: "/download.png", type: "image", duration: 10000 },
-    { src: "/yourbrand.png", type: "image", duration: 10000 },
     { src: "https://iframe.fresh8.co/index.html?id=678686c7684b50193ddcd882", type: "iframe", duration: 20000 },
     { src: "/video.mp4", type: "video", duration: 30000 }
   ];
